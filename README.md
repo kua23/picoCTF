@@ -10,4 +10,4 @@ code 2 lines
 ```
 > for flagging
 * for bullets
-[google](www.google.com)
+[google](https://www.google.com/)
