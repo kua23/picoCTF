@@ -100,4 +100,19 @@ which we can use to get the flag
 ### Flag
 picoCTF{j5_15_7r4n5p4r3n7_b0c2c9cb} 
 
+## Buffer Overflow
+First, we connect to the server 
+`nc saturn.picoctf.net 55984`
+This CTF is based on buffer overflow. Buffer overflow occurs when the amount of data in a website exceeds it storage capacity. Smashing the stack which is provided in the problem statement also means overloading the program so it overflows. Upon seeing the code, we can deduce that if we find a fault in the segmentation, we get the flag. If the sig_sev handler detects a fault of an overflow, it is sent to the handler which then prints the flag
+
+### Flag
+
+## Stonks
+In this, the user has money from which a random share is picked after which the program asks the API token to the user. However, there exists a format string vulnerability as there are no quotes in the line 
+`print (user_buf)` and there is no %x to accept the string.
+On connecting to the server and choosing the connect to api token option, we can enter the api string as 
+`%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x`
+On doing this, we get a string in hexadecimal, which we convert to ASCII where we get a flag sort of looking file
+
+
 
