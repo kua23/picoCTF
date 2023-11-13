@@ -114,5 +114,47 @@ On connecting to the server and choosing the connect to api token option, we can
 `%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x`
 On doing this, we get a string in hexadecimal, which we convert to ASCII where we get a flag sort of looking file
 
+### Flag
+
+
+## GDB Baby Step 0
+GDB, which stands for the GNU Project debugger, allows us to debug a program step by step when it executes. You can disassemble your code and provide breakpoints in them and figure out the mistake using GDB.
+After downloading the file and opening the file using 
+`gdb debugger0_a`, we can use `info functions` to understand which functions do what. The command returns:
+```
+Non-debugging symbols:
+0x0000000000001000  _init
+0x0000000000001030  __cxa_finalize@plt
+0x0000000000001040  _start
+0x0000000000001070  deregister_tm_clones
+0x00000000000010a0  register_tm_clones
+0x00000000000010e0  __do_global_dtors_aux
+0x0000000000001120  frame_dummy
+0x0000000000001129  main
+0x0000000000001140  __libc_csu_init
+0x00000000000011b0  __libc_csu_fini
+0x00000000000011b8  _fini
+```
+
+The problem statement asks what is in the _eax function_ in the _main_ register. According to a source, the RAX registor is an accumulator register that is used for arithmetic and data manipulation generally. The GDB provides a function called _'disassemble'_ which can be used to, as the name suggests, disassemble a function. Hence, we use:
+`disassemble main` that returns:
+```
+Dump of assembler code for function main:
+   0x0000000000001129 <+0>:     endbr64
+   0x000000000000112d <+4>:     push   %rbp
+   0x000000000000112e <+5>:     mov    %rsp,%rbp
+   0x0000000000001131 <+8>:     mov    %edi,-0x4(%rbp)
+   0x0000000000001134 <+11>:    mov    %rsi,-0x10(%rbp)
+   0x0000000000001138 <+15>:    mov    $0x86342,%eax
+   0x000000000000113d <+20>:    pop    %rbp
+   0x000000000000113e <+21>:    ret
+End of assembler dump.
+```
+Thus, we get the value next to the eax register, but it is in hexadecimal. Upon converting the hexadecimal value to decimal, we get the value as 549698, which is the flag.
+
+### Flag
+`picoCTF{549698}`
+
+
 
 
