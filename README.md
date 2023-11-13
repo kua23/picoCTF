@@ -126,12 +126,30 @@ which we can use to get the flag
 ### Flag
 picoCTF{j5_15_7r4n5p4r3n7_b0c2c9cb} 
 
-## 7. Buffer Overflow
+## 7. buffer overflow 0
 First, we connect to the server 
 `nc saturn.picoctf.net 55984`
-This CTF is based on buffer overflow. Buffer overflow occurs when the amount of data in a website exceeds it storage capacity. Smashing the stack which is provided in the problem statement also means overloading the program so it overflows. Upon seeing the code, we can deduce that if we find a fault in the segmentation, we get the flag. If the sig_sev handler detects a fault of an overflow, it is sent to the handler which then prints the flag
+This CTF is based on buffer overflow. Buffer overflow occurs when the amount of data in a website exceeds it storage capacity. Smashing the stack which is provided in the problem statement also means overloading the program so it overflows. Upon seeing the code, we can deduce that if we find a fault in the segmentation, we get the flag. Segmentation fault occurs when a piece of code tries to read and write when it can only read a certain piece of code. It shows that the memory is corrupted.
+```
+void sigsegv_handler(int sig) {
+  printf("%s\n", flag);
+  fflush(stdout);
+  exit(1);
+```
+The flag is with `sigsegv_handler`, thus we need to trigger a segmentation fault.
+```
+void vuln(char *input){
+  char buf2[16];
+  strcpy(buf2, input);
+}
+
+gets(buf1); 
+vuln(buf1);
+```
+The `gets()` is called and reads the user input onto the stack, where the stack is the collection of different data types. However, there is a fault in the function as it write's the input without caring about the length. Thus we can take this to our advantage and overflow the length, pushing the input into the `vuln()` function that triggers a segmentation fault. Thus, by just printing a load of gibberish that has a long length,we get the flag.
 
 ### Flag
+`picoCTF{ov3rfl0ws_ar3nt_that_bad_ef01832d}`
 
 ## 8. Stonks
 In this, the user has money from which a random share is picked after which the program asks the API token to the user. However, there exists a format string vulnerability as there are no quotes in the line 
