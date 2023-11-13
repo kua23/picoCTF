@@ -1,5 +1,5 @@
 # picoCTF
-
+.
 ## 1. tunn3l v1s10n
 A picture is given in the first file. Upon using
 `exiftool tunn3l_v1s10n`
@@ -348,6 +348,94 @@ Thus, the flag will be the smaller number, that is: 3854998744 in 32 bit hex str
 
 ### Flag
 `picoctf{e5c69cd8}`
+
+## 11.babygame01
+
+This is a game in which you, as a player move your character to try and reach the finish line. Upon reaching the finish line, which is just the 'X' it just says you "You Win" but doesn't return back any string. Some other points to be noted were that:
+On moving to extreme right, your character would movte to the level below and on the very left. Upon going to the extreme left, the character moves to a level above and thebery right.
+Thus, it could be inferred, that by going to the top left corner the game, you could find a segmentation fault. Thus by going to the top left corner, we can observe that the 
+`Player has flag:64` value becomes 64. Upon moving there four times, and on typing 'p' it changes to `Player has flag:46` and the flag is printed.
+
+### Flag
+picoCTF{gamer_m0d3_enabled_8985ce0e} 
+
+## 12. Keygenme-py
+
+Upon observing the source code, 
+```
+key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
+key_part_dynamic1_trial = "xxxxxxxx"
+key_part_static2_trial = "}"
+key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
+
+```
+
+```
+def enter_license():
+    user_key = input("\nEnter your license key: ")
+    user_key = user_key.strip()
+
+    global bUsername_trial
+    
+    if check_key(user_key, bUsername_trial):
+        decrypt_full_version(user_key)
+    else:
+        print("\nKey is NOT VALID. Check your data entry.\n\n").
+```
+If this block of code returns true, then we might be able to get the flag
+
+This shows the beginning part of the flag that is fixed and the part of the flag which depends on the username_trial and hashing which we encounter later on in the program. 
+
+```
+if len(key) != len(key_full_template_trial):
+    return False
+```
+This shows that the length of the key is the same as `picoCTF{1n_7h3_|<3y_of_xxxxxxxx}`.
+
+```
+if key[i] != hashlib.sha256(username_trial).hexdigest()[x]:
+    return False
+else:
+    i += 1
+
+```
+This part of the code, basically encrypts the value based on the `username_trial` using the Secure Hashing Algorithm in the order 45362718.
+
+```
+import hashlib
+import base64
+
+
+key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
+key_part_dynamic1_trial = "xxxxxxxx"
+key_part_static2_trial = "}"
+key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
+
+username_trial = b"SCHOFIELD"
+
+potential_dynamic_key = ""
+
+# where our input begins:
+offset = 23
+
+# positions in username_trial
+positions = [4,5,3,6,2,7,1,8]
+
+for p in positions:
+    potential_dynamic_key += hashlib.sha256(username_trial).hexdigest()[p]
+
+key = key_part_static1_trial + potential_dynamic_key + key_part_static2_trial
+print(key)
+print(len(key))
+```
+Upon using this code, we can get the flag for the last 8 positions.
+
+### Flag
+picoCTF{1n_7h3_|<3y_of_e584b363}
+
+
+
+
 
 
 
