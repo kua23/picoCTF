@@ -1,17 +1,5 @@
 # picoCTF
 
-# title
-## subtitle
-### subsubtitle
-`code one line`
-```
-code 2 lines
-code 2 lines
-```
-> for flagging
-* for bullets
-[google](https://www.google.com/)
-
 ## 1. tunn3l v1s10n
 A picture is given in the first file. Upon using
 `exiftool tunn3l_v1s10n`
