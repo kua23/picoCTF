@@ -192,13 +192,60 @@ Upon then using
 `file chall.o`
 we find that it is compiled for ARM aarch64, which is a 64-bit extension of the ARM family. But this code cannot be run by a x86_64 cpu. In order to emulate it we use QEMU, which emulates using dynamic binary translation. We can install it using,
 `sudo apt install qemu-user-static` and run it using 
-`./chall 182476535 3742084308 ` where we get the answer as 
-`Result: 3742084308`
-* This CTF did not make sense using this method so I shall also try the assembly reading method.
+`./chall 3854998744 915131509  ` where we get the answer as 
+`Result: 3854998744`
 
+WE CAN ALSO USE,
+Upon using `cat chall.S`
+we get a block of assembly code.
+For func1,
+```
+func1:
+        sub     sp, sp, #16
+        str     w0, [sp, 12]
+        str     w1, [sp, 8]
+        ldr     w1, [sp, 12]
+        ldr     w0, [sp, 8]
+        cmp     w1, w0
+        bls     .L2
+        ldr     w0, [sp, 12]
+        b       .L3
+```
+the sub command is for three components, where `#16` which denotes a constant, has to be subtracted from `sp` and be stored in ``sp``.
+`sp` stands for stack pointer which is a place to store the memory address of the last elemnt added to the stack.
+In 
+```
+str     w0, [sp, 12]
+str     w1, [sp, 8]
+```
+`str` which stands for store, stores the value of `w0` and `w1` which are user inputted in sp. 
+The number is used to denote the offset, where for 
+`str     w0, [sp, 12]`
+The number is stored in w0 on the stack at offset 12
+```
+ldr     w1, [sp, 12]
+ldr     w0, [sp, 8]
+```
+Here, `ldr` stands for load register, which is used to load the offset value of 12 into the variable w1 in the stack point.
+`cmp     w1, w0` is used to compare the values of w1 and w0.
+`bls     .L2`
+bls stands for branch if less, which says that if w0 is smaller than w1, branch to .L2.
+```
+ldr w0, [sp, 12] 
+    b   .L3
+```
+This loads a value into w0 and branches to L3
 
+L2:
+`ldr     w0, [sp, 8]` - loads a value from stack at offset 8 and loads it into w0
 
+L3:
+`add     sp, sp, 16` - The stack is filled by adding 16 to sp
 
+Thus, the flag will be the smaller number, that is: 3854998744 in 32 bit hex string.
+
+### Flag
+`picoctf{e5c69cd8}`
 
 
 
