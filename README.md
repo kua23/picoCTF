@@ -485,10 +485,72 @@ This prints the flag, by printing the list and joining all the elements of the l
 picoctf{R0UND_N_R0UND_B6B25531}
 
 
+## New Caesar
+```
+LOWERCASE_OFFSET = ord("a")
+ALPHABET = string.ascii_lowercase[:16]
+```
+Here, there is a lowercase offset of the order a, whcih is equal to 97. An offeset is babsically an integer which shows the distance between the beginning of an object and a given element. The alphabet string contains 16 letters starting from 'a' till 'p'.
+
+```
+def b16_encode(plain):
+	enc = ""
+	for c in plain:
+		binary = "{0:08b}".format(ord(c)) #01100001 = 97
+		enc += ALPHABET[int(binary[:4], 2)] #[0110] = [6] = 'g'
+		enc += ALPHABET[int(binary[4:], 2)] #[0001] = [1] = 'b'
+	return enc
+```
+This function first converts the letter into binary and then takes the first half and converts it into a letter. Then it takes the second half of the binary and converts it into another letter. This can be done as the binary has 8 digits.
+
+```
+def shift(c, k):
+	t1 = ord(c) - LOWERCASE_OFFSET
+	t2 = ord(k) - LOWERCASE_OFFSET
+	return ALPHABET[(t1 + t2) % len(ALPHABET)]
+```
+The two encoded letters get shifted by a key where the values of these shifts are stored as t1 and t2. This function performs the caesar shift.
+
+```
+assert all([k in ALPHABET for k in key])
+assert len(key) == 1
+```
+The key is only 1 character long. The key can be any one of the 16 possible letters.
 
 
+Thus, we can write a program to bruteforce and loop over the 16 letters and add 16 possible shifts. Then take the binary, convert it into a number and get the character which we can use to decode the cipher.
+
+```
+def b16_decode(cipher):
+    dec = ""
+    # loop through the cipher 2 characters at a time
+    for c in range(0, len(cipher), 2):
+        # turn the two characters into one binary string
+        binary = "{0:04b}".format(ALPHABET.index(cipher[c])) + "    
+                  {0:04b}".format(ALPHABET.index(cipher[c+1]))
+       
+        # turn the binary string to a character and add
+        dec += chr(int(b, 2))
+        return dec
+```
+We are creating a loop, and skipping every two characters. This is because every two characters in the cipher text actually represents a single character of the encryption based on the encode function in the main program. We need to get the half binaries and concatenate them together to get the full binary again. Each letter of the encryption is an index of the alphabet. So, by getting index we can convert it into the binary. We can convert that binary character into the corresponding ASCII character.
+
+```
+enc = 'ihjghbjgjhfbhbfcfjflfjiifdfgffihfeigidfligigffihfjfhfhfhigfjfffjfeihihfdieieih'
+for key in ALPHABET:
+  flag = ""
+  print("Key:", key)
+  for c in enc:
+    flag += shift(c,key)
+  print("Flag: ", b16_decode(flag))
+```
+We get the flag from this, by bruteforcing through every letter of the first 16 letters of the alphabet.
 
 
+### Flag
+picoCTF{et_tu?_0797f143e2da9dd3e7555d7372ee1bbe}
+
+## miniRSA
 
 
 
