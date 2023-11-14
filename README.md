@@ -433,6 +433,61 @@ Upon using this code, we can get the flag for the last 8 positions.
 ### Flag
 picoCTF{1n_7h3_|<3y_of_e584b363}
 
+## basic-mod 1
+Ok, I'm proud of this as I did it on my own, but I would've been ashamed if I was not able to solve this. The problem statement states that we need to decipher a cipher which is based on mod 37. The ctf has provided a list of numbers and a set of instruction to perform this task.
+```
+l1 = [165, 248, 94, 346, 299, 73, 198, 221, 313, 137, 205, 87, 336, 110, 186, 69, 223, 213, 216, 216, 177, 138]
+l2 = []
+for x in l1:
+    rem = x % 37
+    if rem >= 0 and rem <= 25:
+        l2 += (chr(rem+65))
+    elif rem >= 26 and rem <= 35:
+        l2 += str(rem-26)
+    elif rem == 36:
+        l2 += '_'
+print(''.join(l2))
+```
+This was the code written by me to get the flag. So let's break this down into smaller chunks.
+```
+l1 = [165, 248, 94, 346, 299, 73, 198, 221, 313, 137, 205, 87, 336, 110, 186, 69, 223, 213, 216, 216, 177, 138]
+l2 = []
+```
+Here, I've provided the list of numbers in the problem statement to the list l1. I have also initialized an empty list to l2
+
+```
+for x in l1:
+    rem = x % 37
+```
+This statement starts a for loop. It basically states, for every element in the list l1, take the element and take its modulo with 37 and store it in the variable rem.
+
+```
+if rem >= 0 and rem <= 25:
+        l2 += (chr(rem+65))
+```
+Here, the code states that if the rem variable is greater than or equal to 0 and lesser than 26, convert the number to an ASCII letter and add it to l2. the chr() function converts numbers into ASCII letters. I have added 65 to rem as the ASCII letters begin with the number 65.
+
+```
+elif rem >= 26 and rem <= 35:
+        l2 += str(rem-26)
+```
+Now in this elif branch, I have asked the code to check if the number is greater than 25 and lesser than 36. If it is, the rem value is converted into a decimal number and added to the list l2. Here, we subtract 26 from the rem variable, as we want values ranging only from 0 to 9. We also convert this value into a string as it becomes easier to parse in a list.
+
+```
+elif rem == 36:
+        l2 += '_'
+```
+In the last elif branch, if the rem variable is equal to 36, we add an underscore to the list 2. I have used '==' as this compares the values while a single'=' is an assignment operator.
+`print(''.join(l2))`
+This prints the flag, by printing the list and joining all the elements of the list wihtout any spaces.
+
+### Flag
+picoctf{R0UND_N_R0UND_B6B25531}
+
+
+
+
+
 
 
 
