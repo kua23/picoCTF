@@ -551,6 +551,40 @@ We get the flag from this, by bruteforcing through every letter of the first 16 
 picoCTF{et_tu?_0797f143e2da9dd3e7555d7372ee1bbe}
 
 ## miniRSA
+```
+N: 29331922499794985782735976045591164936683059380558950386560160105740343201513369939006307531165922708949619162698623675349030430859547825708994708321803705309459438099340427770580064400911431856656901982789948285309956111848686906152664473350940486507451771223435835260168971210087470894448460745593956840586530527915802541450092946574694809584880896601317519794442862977471129319781313161842056501715040555964011899589002863730868679527184420789010551475067862907739054966183120621407246398518098981106431219207697870293412176440482900183550467375190239898455201170831410460483829448603477361305838743852756938687673
+e: 3
+
+ciphertext (c): 2205316413931134031074603746928247799030155221252519872649649212867614751848436763801274360463406171277838056821437115883619169702963504606017565783537203207707757768473109845162808575425972525116337319108047893250549462147185741761825125 
+
+```
+This is the given information.
+
+
+
+## basic mod-2
+
+So, in this program, we will need to find the inverse modulus of the given values with respect to 41 and then print the output to get the flag. The program I used to write this is:
+```
+import string
+
+values = string.ascii_lowercase + "0123456789_"
+l1 = [268, 413, 438, 313, 426, 337, 272, 188, 392, 338, 77, 332, 139, 113, 92, 239, 247, 120, 419, 72, 295, 190, 131]
+flag = ''
+```
+Here, we first import the library called 'string'. We add the alphabets, numbers and the '_' to a variable called values, and we assign the list of numbers given to get the flag to a list called l1. We also initialize an empty flag variable.
+
+```
+for x in l1:
+    ind = pow(x, -1, 41)
+    flag += values[ind-1]
+print(flag)
+```
+In this for loop, we iterate through every element in the list l1, The ind variable is equal to the inverse modulo of the number with the 41, where the pow() function is defined with the attributes (x^-1 % 41). This value is taken as the index with respect to values from which the flag is extracted.
+
+### Flag
+picoCTF{1nv3r53ly_h4rd_8a05d939}
+
 
 
 
