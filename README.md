@@ -586,6 +586,46 @@ In this for loop, we iterate through every element in the list l1, The ind varia
 picoCTF{1nv3r53ly_h4rd_8a05d939}
 
 
+## miniRSA
+
+c = m^e % n is the formula for encrypting the minirsa. 
+m is the plaintext.
+E is a small number, where ideally it has to be a large prime number, so we could conceivably compute the cube root.
+
+RSACTFTool
+Upon using the tool,
+$ python RsaCtfTool.py -e 3 -n TODO --uncipher TODO
+
+c = 2205316413931134031074603746928247799030155221252519872649594750678791181631768977116979076832403970846785672184300449694813635798586699205901153799059293422365185314044451205091048294412538673475392478762390753946407342073522966873394341
+def find_cubic_root(n):
+    a = 1
+    b = n
+    while b - a > 1:
+        mid = (a + b) // 2
+        if mid**3 > n:
+            b = mid
+        else:
+            a = mid
+
+    if a ** 3 == n:
+        return a
+    elif b ** 3 == n:
+        return b
+    else:
+        return 0
+
+m = find_cubic_root(c)
+h = hex(m)
+print(h)
+p = str(hex(m)[2:]).decode('hex')
+print(p)
+
+* This is the code which I imported from the internet as I did not understand it completely. But it helped me get the flag.
+
+### Flag
+picoCTF{n33d_a_lArg3r_e_0a41eo21}
+
+
 
 
 
