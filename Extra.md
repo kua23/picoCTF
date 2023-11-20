@@ -55,8 +55,8 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 which does show that there are hidden files inside the picture and we may just have to unzip it.
 
 After using 
-`unzip dolls.jpg` we get a directory named `_dolls.jpg.extracted` and upon changing the directory to that file, we can see upon using ls that it contains a sub directory called base_images, which contains `2_c.zip` which is then unzipped by using `unzip 2_c.zip`, containing another directory called base_images which contains another file called `3_c.zip` and upon unzipping and changing the directory to the `base_images`, we get `4_c.zip` upon listing out the contents of the directory and upon finally unzipping that we get a file called `flag.txt` and on using `cat flag.txt`, we get the flag
+`unzip dolls.jpg` we get a directory named `_dolls.jpg.extracted` and upon changing the directory to that file, we can see upon using ls that it contains a sub directory called base_images, which contains `2_c.zip` and another `base_images` directory along with `3_c.zip` and upon changing the directory, and listing out its contents using `ls base_images` we get another `base_images` which we can navigate into to reveal another `base_images` directory along with `4_c.zip` and on finally navigating into that `base_images` directory, we ssee a `flag.txt` and on using `cat flag.txt`, we get the flag.
 
 ### Flag
-
+picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}    
 
