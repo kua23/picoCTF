@@ -57,6 +57,32 @@ which does show that there are hidden files inside the picture and we may just h
 After using 
 `unzip dolls.jpg` we get a directory named `_dolls.jpg.extracted` and upon changing the directory to that file, we can see upon using ls that it contains a sub directory called base_images, which contains `2_c.zip` and another `base_images` directory along with `3_c.zip` and upon changing the directory, and listing out its contents using `ls base_images` we get another `base_images` which we can navigate into to reveal another `base_images` directory along with `4_c.zip` and on finally navigating into that `base_images` directory, we ssee a `flag.txt` and on using `cat flag.txt`, we get the flag.
 
+```
+┌──(kali㉿kali)-[~/Downloads]
+└─$ cd _dolls.jpg.extracted                                                                       
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted]
+└─$ ls
+4286C.zip  base_images                                             
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted]
+└─$ cd base_images                                                                           
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted/base_images]
+└─$ ls
+2_c.jpg  base_images                           
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted/base_images]
+└─$ cd base_images                                                   
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted/base_images/base_images]
+└─$ ls            
+3_c.jpg  base_images                                                     
+┌──(kali㉿kali)-[~/Downloads/_dolls.jpg.extracted/base_images/base_images]
+└─$ cd base_images                                                   
+┌──(kali㉿kali)-[~/…/_dolls.jpg.extracted/base_images/base_images/base_images]
+└─$ ls
+4_c.jpg  flag.txt                                                     
+┌──(kali㉿kali)-[~/…/_dolls.jpg.extracted/base_images/base_images/base_images]
+└─$ cat flag.txt  
+picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}
+```
+
 ### Flag
 picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}    
 
