@@ -84,5 +84,18 @@ picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}
 ```
 
 ### Flag
-picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}    
+picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}   
+
+## Glory of the Garden
+
+The hint given for this ctf is what iss a hexeditor, which seems pretty obvious that we need to open the pictures using (a hexeditor)[https://hexed.it/]
+Upon opening the picture and scrolling to the bottom, you do find a line saying `Here is a flag "picoCTF{more_than_m33ts_the_3y3eBdBd2cc}"` which is the flag
+
+### Flag
+picoCTF{more_than_m33ts_the_3y3eBdBd2cc}
+
+## Wireshark doo dooo do doo...
+
+
+
 
