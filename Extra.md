@@ -87,6 +87,7 @@ picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}
 picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}   
 
 ## Glory of the Garden
+![image](https://github.com/kua23/picoCTF/assets/61975172/e505a2fd-0839-41b0-919b-b5cca0ab4c15)
 
 The hint given for this ctf is what iss a hexeditor, which seems pretty obvious that we need to open the pictures using (a hexeditor)[https://hexed.it/]
 Upon opening the picture and scrolling to the bottom, you do find a line saying `Here is a flag "picoCTF{more_than_m33ts_the_3y3eBdBd2cc}"` which is the flag
