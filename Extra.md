@@ -38,3 +38,25 @@ The only thing that catches my eye is the license which looks like it has been e
 ### Flag
 picoCTF{the_m3tadata_1s_modified}
 
+
+## Matryoshka doll
+By definition, a matryoshka doll is a Russian doll which contains smaller dolls inside it, which in turn contain smaller dolls. The title itself sounds like a hint to the ctf, trying to imply that there maybe hidden files inside the base `dolls.jpg`. Upon using `binwalk -e dolls.jpg `, the code returned is
+```
+                                 
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             PNG image, 594 x 1104, 8-bit/color RGBA, non-interlaced
+3226          0xC9A           TIFF image data, big-endian, offset of first image directory: 8
+272492        0x4286C         Zip archive data, at least v2.0 to extract, compressed size: 378942, uncompressed size: 383937, name: base_images/2_c.jpg
+651600        0x9F150         End of Zip archive, footer length: 22
+
+```
+which does show that there are hidden files inside the picture and we may just have to unzip it.
+
+After using 
+`unzip dolls.jpg` we get a directory named `_dolls.jpg.extracted` and upon changing the directory to that file, we can see upon using ls that it contains a sub directory called base_images, which contains `2_c.zip` which is then unzipped by using `unzip 2_c.zip`, containing another directory called base_images which contains another file called `3_c.zip` and upon unzipping and changing the directory to the `base_images`, we get `4_c.zip` upon listing out the contents of the directory and upon finally unzipping that we get a file called `flag.txt` and on using `cat flag.txt`, we get the flag
+
+### Flag
+
+
