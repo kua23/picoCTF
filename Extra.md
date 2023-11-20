@@ -36,3 +36,5 @@ The only thing that catches my eye is the license which looks like it has been e
 `base64 -d license.txt` we get the flag.
 
 ### Flag
+picoCTF{the_m3tadata_1s_modified}
+
