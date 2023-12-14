@@ -641,8 +641,10 @@ print(p)
 
 * This is the code which I imported from the internet as I did not understand it completely. But it helped me get the flag.
 
+  Instead, this website could be used to find out the flag
+
 ### Flag
-picoCTF{n33d_a_lArg3r_e_0a41eo21}
+picoCTF{n33d_a_lArg3r_e_606ce004}
 
 
 
