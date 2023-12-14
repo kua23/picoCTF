@@ -16,7 +16,12 @@ _'notaflag{sorry}'_
 
 Opening the file in an hexeditor like [HexEd.it](https://hexed.it/), we can observe that the height of the .bmp file is very small. Thus, once the hexdump (data converted from any other form to hexadecimal) is obtained, we can edit it in order to obtain the full image by increasing the height of the file.
 The width of the file starts at offset 12 and goes on for a length of 4 bits, while the height starts at offset 16 and goes on for 4 bits too. On changing the height of the .bmp file to its width, by replacing _32 01_ with _32 04_ , thus increasing the height of the image and opening the file again with the text editor, we get the entire picture which contains the flag.
+![image](https://github.com/kua23/picoCTF/assets/61975172/7a1fbc82-7370-41e0-8e44-3398d7ffdcc7)
+
 Thus, we can conclude that the height of the file wass extremely small compared to the original height of the file which contained the flag. 
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/749562e2-bbab-4c1b-bcea-5a2ae6c8f39d)
+
 ### Flag
 `picoCTF{qu1t3_a_v13w_2020}`
 
