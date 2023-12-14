@@ -26,20 +26,32 @@ Thus, we can conclude that the height of the file wass extremely small compared 
 `picoCTF{qu1t3_a_v13w_2020}`
 
 ## 2. Trivial FTP
-First, a directory called _**tftp.pcanpng**_ is downloaded, which hosts a Trivil File Transfer Protocol. Upon opening the directory using [Wireshark](https://www.wireshark.org/), and navigating to _File>Export Objects>TFTP_, all the files in the directory can be saved. There exists a file called _**instructions.txt**_ which can be opened using
+First, a directory called _**tftp.pcanpng**_ is downloaded, which hosts a Trivil File Transfer Protocol. Upon opening the directory using [Wireshark](https://www.wireshark.org/), and navigating to _File>Export Objects>TFTP_, all the files in the directory can be saved. 
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/c0a5cd7a-35b1-4686-9975-48bb12d22bbb)
+
+There exists a file called _**instructions.txt**_ which can be opened using
 `cat instructions.txt`
 from which we get a cipher:
 _GSGCQBRFAGRAPELCGBHEGENSSVPFBJRZHFGQVFTHVFRBHESYNTGENAFSRE.SVTHERBHGNJNLGBUVQRGURSYNTNAQVJVYYPURPXONPXSBEGURCYNA_
+
+
 This did look like a caesar cipher, and upon bruteforcing it using [this tool](https://www.dcode.fr/caesar-cipher), it was encoded as a _rot13_ file. Upon decoding the key, it returned
 `TFTPDOESNTENCRYPTOURTRAFFICSOWEMUSTDISGUISEOURFLAGTRANSFER.FIGUREOUTAWAYTOHIDETHEFLAGANDIWILLCHECKBACKFORTHEPLAN
 `
+
 _'I will check back for the plan'_ must actually mean deciphering the plan file which upon doing so using [rot13](https://www.dcode.fr/caesar-cipher) gave 
 `IUSEDTHEPROGRAMANDHIDITWITH-DUEDILIGENCE.CHECKOUTTHEPHOTOS
 `
+
 Upon using the command 
-'steghide info'
-to check if there is any hidden message in the three photos, the first two files, _'picture1.bmp' and 'picture2.bmp'_did not return anything but the third file _'picture3.bmp_ returned an embedded _'flag.txt'_
-Using the command `steghide extract -sf picture3.bmp`, where sf stands for stegofile we get the flag.
+`steghide info`
+to check if there is any hidden message in the three photos, the first two files, _'picture1.bmp' and 'picture2.bmp'_did not return anything but the third file _'picture3.bmp_ returned an embedded _'flag.txt'_ when the passphrase `DUEDILIGENCE` is used to decode the hidden message in the pictures.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/dd292599-43e1-4254-8519-b4f731a7733f)
+
+
+Using the command `steghide extract -sf picture3.bmp`, where sf stands for stegofile we get the flag using `cat flag.txt`.
 
 ### Flag
 `picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}`
