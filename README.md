@@ -114,9 +114,14 @@ This command injection can be prevented by ensuring that users can only execute 
 ## 5. Forbidden Paths
 Upon entering the website, (http://saturn.picoctf.net:64403/), there is a list of _.txt_ files and a '..' file.
 The problem statement gives that there are four directories into which we need to navigate in order to get the _flag.txt_ file. On first trying to navigate through the directories by just pasting the path,
-`/usr/share/nginx/html/ ` it did not work. Hence, instead of that I just used
+`/usr/share/nginx/html/ ` it did not work. 
+
+Hence, instead of that I just used
 `../../../../flag.txt` 
+where each `../` is used to climb the directory once, thuse `../` climbs to the usr directory, and then climbs to share, then nginx and finally html,
 where it navigated into four directories and the flag file is provided. 
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/b73f163c-08a6-4ce8-9efd-8b55b650cf0a)
 
 ### Flag
 picoCTF{7h3_p47h_70_5ucc355_e5fe3d4d}
