@@ -26,7 +26,7 @@ Thus, we can conclude that the height of the file wass extremely small compared 
 `picoCTF{qu1t3_a_v13w_2020}`
 
 ## 2. Trivial FTP
-First, a directory called _**tftp.pcanpng**_ is downloaded, which hosts a Trivil File Transfer Protocol. Upon opening the directory using [Wireshark](https://www.wireshark.org/), and navigating to _File>Export Objects>TFTP_, all the files in the directory can be saved. 
+First, a directory called _**tftp.pcanpng**_ is downloaded, which hosts a Trivil File Transfer Protocol which is used to store or extract a file from a remote host. Upon opening the directory using [Wireshark](https://www.wireshark.org/), and navigating to _File>Export Objects>TFTP_, all the files in the directory can be saved. Wireshark is a tool used to analyze network traffic, and perform actions like tracing connections and viewing contents of network transactions and protocols.
 
 ![image](https://github.com/kua23/picoCTF/assets/61975172/c0a5cd7a-35b1-4686-9975-48bb12d22bbb)
 
