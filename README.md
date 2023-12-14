@@ -18,7 +18,7 @@ Opening the file in an hexeditor like [HexEd.it](https://hexed.it/), we can obse
 The width of the file starts at offset 12 and goes on for a length of 4 bits, while the height starts at offset 16 and goes on for 4 bits too. On changing the height of the .bmp file to its width, by replacing _32 01_ with _32 04_ , thus increasing the height of the image and opening the file again with the text editor, we get the entire picture which contains the flag.
 ![image](https://github.com/kua23/picoCTF/assets/61975172/7a1fbc82-7370-41e0-8e44-3398d7ffdcc7)
 
-Thus, we can conclude that the height of the file wass extremely small compared to the original height of the file which contained the flag. 
+Thus, we can conclude that the height of the file was extremely small compared to the original height of the file which contained the flag. 
 
 ![image](https://github.com/kua23/picoCTF/assets/61975172/749562e2-bbab-4c1b-bcea-5a2ae6c8f39d)
 
@@ -94,12 +94,19 @@ and using
 `picoCTF{D1d_u_kn0w_ppts_r_z1p5}`
 
 ## 4. caas
-Cowsay as a service is a program in which a cow tells a message which you input.
-The server used here is node.js. This ctf was an example of a command injection which is basically when a program which takes in a user input is manipulated in such a way that the user who inputs the command can extract information from the program host's system.
+Cowsay as a service is a program in which a cow tells a message which the user inputs.
+The server used here is node.js which is a cross platform, open source runtime environment. This ctf was an example of a command injection which is basically when a program which takes in a user input is manipulated in such a way that the user who inputs the command can extract information from the program host's system.
 Thus, our first task is to see if the cowsay works as it is intended to work. Hence, we first use (https://caas.mars.picoctf.net/cowsay/hi) which returns the cowsay as intended.
+![image](https://github.com/kua23/picoCTF/assets/61975172/9a989363-15f4-425e-82e6-494a180e76f8)
+
 In order to use a command injection, we can use the same url and use
 (https://caas.mars.picoctf.net/cowsay/hi;ls)
 where the ; is used to end the first command and start a new command. This lists the files in the directory where the cowsay program is stored. This returns certain folders and files under which there is one .txt file and upon using (https://caas.mars.picoctf.net/cowsay/hi;ls;cat%20falg.txt), the flag is received.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/9a0cc60b-0ecd-4b4d-93f6-99cf35925faa)
+
+This command injection can be prevented by ensuring that users can only execute the program, but not obtain permissions to write and read it. 
+
 
 ### Flag
 `picoCTF{moooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo0o}`
