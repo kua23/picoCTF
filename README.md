@@ -127,14 +127,20 @@ where it navigated into four directories and the flag file is provided.
 picoCTF{7h3_p47h_70_5ucc355_e5fe3d4d}
 
 ## 6. Local Authority
-The website which the user is directed to shows a username and a password which can be filled to get the flag, presumably... As there are no other elements present in the website, we can right click the page and go to the _**Inspect Source**_ option which shows an _index_ and a _style.css _ file. Upon entering any gibberish name and password, there pops a new file called _login.php_ which contains the code
+The website which the user is directed to shows a username and a password which can be filled to get the flag, presumably... As there are no other elements present in the website, we can right click the page and go to the _**Inspect Source**_ option which shows an _index_ and a _style.css _ file.
+![image](https://github.com/kua23/picoCTF/assets/61975172/3691a078-f351-46a5-a0ff-25049de9f040)
+
+Upon entering any gibberish name and password, there pops a new file called _login.php_ which contains the code
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/2c864f95-ba47-4cc0-b71a-1e7da37de8e7)
+
 ```
 function checkPassword(username, password)
 {
   if( username === 'admin' && password === 'strongPassword098765' )
 
 ```
-which we can use to get the flag
+Upon logging in using these credentials,. we can get the flag.
 
 ### Flag
 picoCTF{j5_15_7r4n5p4r3n7_b0c2c9cb} 
