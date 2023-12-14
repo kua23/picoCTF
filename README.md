@@ -57,49 +57,28 @@ Using the command `steghide extract -sf picture3.bmp`, where sf stands for stego
 `picoCTF{h1dd3n_1n_pLa1n_51GHT_18375919}`
 
 ## 3. MacroHard WeakEdge
-This picoCTF is based on binwalk. Upon downloading the file _'Forensics is fun'_ , we can use binwalk on that file. This command is used for identifying and extracting embeddded files and code that is executable. In simpler words, it is used to extract the content of binary files. 
+This picoCTF is based on binwalk. Upon downloading the file _'Forensics is fun'_ , we can use binwalk on that file. This command is used for identifying and extracting embedded files and code that is executable. In simpler words, it is used to extract the content of binary files. 
 
-`binwalk 'Forensics is fun.pptm'`
-Upon using this, we get a list of unzipped files
-`binwalk -e ‘Forensics is fun.pptm’`
-Doing this, we can use it to extract the unzipped files in the .pptm.
+
+Upon using `binwalk 'Forensics is fun.pptm'`, we get a list of unzipped files
+
+Running `binwalk -e ‘Forensics is fun.pptm’`, we can use it to extract the unzipped files in the .pptm.
 We get a new file called 'Forensics is fun.pptm.extracted' in our directory and upon navigating to it using 
 ``cd '_Forensics is fun.pptm.extracted'``
 and using 
-``ls -la *``
-where * stands for all files and directories, we get a list of files.
+``ls -la ``
+we get a list of files in the directory.
 ```
-rw-r--r-- 1 kali kali 100093 Nov 13 10:20  0.zip
--rw-r--r-- 1 kali kali  10660 Jan  1  1980 '[Content_Types].xml'
+total 136
+drwxr-xr-x  6 kali kali   4096 Nov  9 17:52  .
+drwxr-xr-x 11 kali kali   4096 Nov 20 22:24  ..
+-rw-r--r--  1 kali kali 100093 Nov  9 17:48  0.zip
+drwxr-xr-x  5 kali kali   4096 Nov  9 17:52  _0.zip.extracted
+-rw-r--r--  1 kali kali  10660 Jan  1  1980 '[Content_Types].xml'
+drwxr-xr-x  2 kali kali   4096 Nov  9 17:48  docProps
+drwxr-xr-x  7 kali kali   4096 Nov  9 17:48  ppt
+drwxr-xr-x  2 kali kali   4096 Nov  9 17:48  _rels
 
-docProps:
-total 20
-drwxr-xr-x 2 kali kali 4096 Nov 13 10:20 .
-drwxr-xr-x 5 kali kali 4096 Nov 13 10:20 ..
--rw-r--r-- 1 kali kali 3784 Jan  1  1980 app.xml
--rw-r--r-- 1 kali kali  666 Jan  1  1980 core.xml
--rw-r--r-- 1 kali kali 2278 Jan  1  1980 thumbnail.jpeg
-
-ppt:
-total 56
-drwxr-xr-x 7 kali kali 4096 Nov 13 10:20 .
-drwxr-xr-x 5 kali kali 4096 Nov 13 10:20 ..
--rw-r--r-- 1 kali kali 5197 Jan  1  1980 presentation.xml
--rw-r--r-- 1 kali kali  818 Jan  1  1980 presProps.xml
-drwxr-xr-x 2 kali kali 4096 Nov 13 10:20 _rels
-drwxr-xr-x 3 kali kali 4096 Nov 13 10:20 slideLayouts
-drwxr-xr-x 3 kali kali 4096 Nov 13 10:20 slideMasters
-drwxr-xr-x 3 kali kali 4096 Nov 13 10:20 slides
--rw-r--r-- 1 kali kali  182 Jan  1  1980 tableStyles.xml
-drwxr-xr-x 2 kali kali 4096 Nov 13 10:20 theme
--rw-r--r-- 1 kali kali 7168 Jan  1  1980 vbaProject.bin
--rw-r--r-- 1 kali kali  811 Jan  1  1980 viewProps.xml
-
-_rels:
-total 12
-drwxr-xr-x 2 kali kali 4096 Nov 13 10:20 .
-drwxr-xr-x 5 kali kali 4096 Nov 13 10:20 ..
--rw-r--r-- 1 kali kali  738 Jan  1  1980 .rels
 ```
 Then using,
 ``strings ppt/vbaProject.bin``
