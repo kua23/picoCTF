@@ -143,7 +143,7 @@ function checkPassword(username, password)
 Upon logging in using these credentials,. we can get the flag.
 
 ### Flag
-picoCTF{j5_15_7r4n5p4r3n7_b0c2c9cb} 
+`picoCTF{j5_15_7r4n5p4r3n7_b0c2c9cb}` 
 
 ## 7. buffer overflow 0
 First, we connect to the server 
