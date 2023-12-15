@@ -364,7 +364,7 @@ Thus, the flag will be the smaller number, that is: 3854998744 in 32 bit hex str
 ## 11.babygame01
 
 This is a game in which you, as a player move your character to try and reach the finish line. Upon reaching the finish line, which is just the 'X' it just says you "You Win" but doesn't return back any string. Some other points to be noted were that:
-On moving to extreme right, your character would movte to the level below and on the very left. Upon going to the extreme left, the character moves to a level above and thebery right.
+On moving to extreme right, your character would move to the level below and on the very left. Upon going to the extreme left, the character moves to a level above and the very right.
 Thus, it could be inferred, that by going to the top left corner the game, you could find a segmentation fault. Thus by going to the top left corner, we can observe that the 
 `Player has flag:64` value becomes 64. Upon moving there four times, and on typing 'p' it changes to `Player has flag:46` and the flag is printed.
 
@@ -445,7 +445,7 @@ Upon using this code, we can get the flag for the last 8 positions.
 ### Flag
 picoCTF{1n_7h3_|<3y_of_e584b363}
 
-## basic-mod 1
+## 13. basic-mod 1
 Ok, I'm proud of this as I did it on my own, but I would've been ashamed if I was not able to solve this. The problem statement states that we need to decipher a cipher which is based on mod 37. The ctf has provided a list of numbers and a set of instruction to perform this task.
 ```
 l1 = [165, 248, 94, 346, 299, 73, 198, 221, 313, 137, 205, 87, 336, 110, 186, 69, 223, 213, 216, 216, 177, 138]
