@@ -257,7 +257,8 @@ picoCTF{I_l05t_4ll_my_m0n3y_1cf201a0}
 
 
 ## 9. GDB Baby Step 0
-GDB, which stands for the GNU Project debugger, allows us to debug a program step by step when it executes. You can disassemble your code and provide breakpoints in them and figure out the mistake using GDB.
+GDB, which stands for the GNU Project Debugger, allows us to debug a program step by step when it executes. You can disassemble your code and provide breakpoints in them and figure out the mistake using GDB.
+The file given is an ELF(Executable and Linkable Format).
 After downloading the file and opening the file using 
 `gdb debugger0_a`, we can use `info functions` to understand which functions do what. The command returns:
 ```
