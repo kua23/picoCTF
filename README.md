@@ -242,28 +242,15 @@ Buying stonks with token:
 0x8ae83900x804b0000x80489c30xf7f67d800xffffffff0x10x8ae61600xf7f751100xf7f67dc7(nil)0x8ae71800x10x8ae83700x8ae83900x6f6369700x7b4654430x306c5f490x345f74350x6d5f6c6c0x306d5f790x5f79336e0x326663310x306131300xff8d007d
 
 ```
-The underscores are used to separate the output so it becomes easier to read. 
+The underscores are used to separate the output,so it becomes easier to read. 
 Also the 'nil' must be a padding operator, thus we conside only the hexadecimal digits after that.
-Upon inputting the hexademical code to a [hexadecimal editor](https://www.rapidtables.com/convert/number/hex-to-ascii.html), the value returned was 
-`çè7®ocip{FTC0l_I4_t5m_ll0m_y_y3n2fc10a10ÿ`
-and upon using this program:
-```
-string = "ocip{FTC0l_I4_t5m_ll0m_y_y3n4cdbae52ÿ½�}"
-out = ""
-temp = ""
-index = 0
-for char in string:
-    temp += char
-    index += 1
-    if index%4 == 0:
-        fwd = ""
-        for temp_char in temp:
-            fwd = temp_char + fwd
-        out += fwd
-        temp = ""
-print(out)
-```
-which reverses the strings every fourth letter, we got the flag. This was an example of little endian
+Upon inputting the hexademical code to a [hexadecimal editor](https://www.rapidtables.com/convert/number/hex-to-ascii.html), and removing the unwanted parts, the value returned was 
+`ocip{FTC0l_I4_t5m_ll0m_y_y3n2fc10a10ÿ`
+This can then be inputted into [this program](https://gchq.github.io/CyberChef/#recipe=Swap_endianness('Hex',4,true)From_Hex('Auto')&input=Cgk) to swap endianness.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/8d2f0025-524f-4800-9462-8739db9ce053)
+
+This reverses the strings every fourth letter and we get the flag. This was an example of big endian which is swapped to little endian, which is a way to store multibyte data types. The last byte of the multibyte data is stored first in little endian. This is then reversed to get the flag.
 
 ### Flag
 picoCTF{I_l05t_4ll_my_m0n3y_1cf201a0}
