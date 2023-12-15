@@ -595,42 +595,26 @@ picoCTF{1nv3r53ly_h4rd_8a05d939}
 
 
 ## miniRSA
+So, what is an RSA?
+It is basically a type of encryption which uses two keys, a public key and a private key, for the encrypting process. The public key is used to encrypt the message while the private key is only provided to the user and is used to decrypt the message. It is a faster encryption, and one in which the data cannot be easily modified in the host.
 
-c = m^e % n is the formula for encrypting the minirsa. 
-m is the plaintext.
+It works on the principle of assymetric encryption and digital signatures.
+
+First, two large prime numbers p and q are taken. Consider,
+z = (p-1)(q-1)
+n = p*q
+Choose a number e between 1 and z.
+d = (k*z + 1)/e is the formula for encrypting the minirsa. 
+The private key pair is given by (n,d) while the public key pair is given by (n,e).
+m is the plaintext and c is the cipher text.
+Thus to encrypt the data, we use c = (texttobeencypted)^e mod n
+And then to decrypt the data, we use (c^d) mod n.
+
+
 E is a small number, where ideally it has to be a large prime number, so we could conceivably compute the cube root.
+Thus, [this website](https://www.dcode.fr/rsa-cipher) could be used to find out the flag
+![image](https://github.com/kua23/picoCTF/assets/61975172/c0aa58cb-927a-4091-a95a-e72d7f340549)
 
-RSACTFTool
-Upon using the tool,
-$ python RsaCtfTool.py -e 3 -n TODO --uncipher TODO
-
-c = 2205316413931134031074603746928247799030155221252519872649594750678791181631768977116979076832403970846785672184300449694813635798586699205901153799059293422365185314044451205091048294412538673475392478762390753946407342073522966873394341
-def find_cubic_root(n):
-    a = 1
-    b = n
-    while b - a > 1:
-        mid = (a + b) // 2
-        if mid**3 > n:
-            b = mid
-        else:
-            a = mid
-
-    if a ** 3 == n:
-        return a
-    elif b ** 3 == n:
-        return b
-    else:
-        return 0
-
-m = find_cubic_root(c)
-h = hex(m)
-print(h)
-p = str(hex(m)[2:]).decode('hex')
-print(p)
-
-* This is the code which I imported from the internet as I did not understand it completely. But it helped me get the flag.
-
-  Instead, this website could be used to find out the flag
 
 ### Flag
 picoCTF{n33d_a_lArg3r_e_606ce004}
