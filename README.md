@@ -296,8 +296,8 @@ Thus, we get the value next to the eax register, but it is in hexadecimal. Upon 
 `picoCTF{549698}`
 
 ## ARMssembly 0
-What is an ARM first? It is a family of CPUs based on reduced instruction set computer(RISC) architecture. They have two main states where they can operate: Instructions state and Thumb state. According to a writeup which I followed, this ctf could have been used by either reading the assembly code or by cross compiling it.  This ctf is based on cross compiling ARM assembly on x86, where x86 is a damily of complex instruction set computer. Thus for cross compiling it, we need to install a cross compiler using 
-``sudo apt install binutils-aarch64-linux-gnu`` and then from there, inn order to cross compile it, we use:
+What is an ARM first? It is a family of CPUs based on reduced instruction set computer(RISC) architecture. They have two main states where they can operate: Instructions state and Thumb state. According to a writeup which I followed, this ctf could have been used by either reading the assembly code or by cross compiling it.  This ctf is based on cross compiling ARM assembly on x86, where x86 is a family of complex instruction set computer(CISC). Thus for cross compiling it, we need to install a cross compiler using 
+``sudo apt install binutils-aarch64-linux-gnu`` and then from there, in order to cross compile it, we use:
 ```
 aarch64-linux-gnu-as -o chall.o chall.S
 aarch64-linux-gnu-gcc -static -o chall chall.o
@@ -325,8 +325,8 @@ func1:
         ldr     w0, [sp, 12]
         b       .L3
 ```
-the sub command is for three components, where `#16` which denotes a constant, has to be subtracted from `sp` and be stored in ``sp``.
-`sp` stands for stack pointer which is a place to store the memory address of the last elemnt added to the stack.
+the sub command is for three components, where `#16` which denotes a constant, has to be subtracted from `sp` and be stored in `sp`.
+`sp` stands for stack pointer which is a place to store the memory address of the last element added to the stack.
 In 
 ```
 str     w0, [sp, 12]
