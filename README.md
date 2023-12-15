@@ -148,7 +148,10 @@ Upon logging in using these credentials,. we can get the flag.
 ## 7. buffer overflow 0
 First, we connect to the server 
 `nc saturn.picoctf.net 55984`
-This CTF is based on buffer overflow. Buffer overflow occurs when the amount of data in a website exceeds it storage capacity. Smashing the stack which is provided in the problem statement also means overloading the program so it overflows. Upon seeing the code, we can deduce that if we find a fault in the segmentation, we get the flag. Segmentation fault occurs when a piece of code tries to read and write when it can only read a certain piece of code. It shows that the memory is corrupted.
+This CTF is based on buffer overflow. Buffers are temporary memory storage regions that hold data temporarily while it is moved from one location to another.	+ Buffer overflow occurs when the amount of data in a website exceeds it storage capacity. Thus, the program attempting to store or write the excess data overwrites the adjacent memory locations. Upon seeing the code, we can deduce that if we find a fault in the segmentation, we get the flag. Segmentation fault occurs when a piece of code tries to read and write when it can only read a certain piece of code. It shows that the memory is corrupted. There are two types of buffer overflows: Stack-based and heap-based. 
+In order to prevent buffer overflows, certain methods can be used:
+Address Space Randomization - This moves around the address locations of data. However, buffer overflow attacks need to know the memory locations which makes it difficult for it to be carried out.
+Data Execution Prevention - which prevents the code from being executed in non-executable regions.
 ```
 void sigsegv_handler(int sig) {
   printf("%s\n", flag);
@@ -165,7 +168,9 @@ void vuln(char *input){
 gets(buf1); 
 vuln(buf1);
 ```
-The `gets()` is called and reads the user input onto the stack, where the stack is the collection of different data types. However, there is a fault in the function as it write's the input without caring about the length. Thus we can take this to our advantage and overflow the length, pushing the input into the `vuln()` function that triggers a segmentation fault. Thus, by just printing a load of gibberish that has a long length,we get the flag.
+The `gets()` is called and reads the user input onto the stack, where the stack is the collection of different data types. However, there is a fault in the function as it write's the input without caring about the length. Thus we can take this to our advantage and overflow the length, pushing the input into the `vuln()` function that triggers a segmentation fault. Thus, by just printing a load of gibberish that has a long length, we get the flag.
+
+Thus, buffer overflows can be used to corrupt a web application's execution stack, execute malware code and take over a machine
 
 ### Flag
 `picoCTF{ov3rfl0ws_ar3nt_that_bad_ef01832d}`
