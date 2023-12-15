@@ -365,8 +365,15 @@ Thus, the flag will be the smaller number, that is: 3854998744 in 32 bit hex str
 
 This is a game in which you, as a player move your character to try and reach the finish line. Upon reaching the finish line, which is just the 'X' it just says you "You Win" but doesn't return back any string. Some other points to be noted were that:
 On moving to extreme right, your character would move to the level below and on the very left. Upon going to the extreme left, the character moves to a level above and the very right.
-Thus, it could be inferred, that by going to the top left corner the game, you could find a segmentation fault. Thus by going to the top left corner, we can observe that the 
+Thus, it could be inferred, that by going to the top left corner the game, you could find a segmentation fault. 
+![image](https://github.com/kua23/picoCTF/assets/61975172/4484c504-af96-4f74-9a1b-c28c7cfec196)
+
+
+Thus by going to the top left corner, we can observe that the 
 `Player has flag:64` value becomes 64. Upon moving there four times, and on typing 'p' it changes to `Player has flag:46` and the flag is printed.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/882e38dd-2bd2-4770-89e7-716f8cd2676a)
+
 
 ### Flag
 picoCTF{gamer_m0d3_enabled_8985ce0e} 
