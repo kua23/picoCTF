@@ -123,6 +123,27 @@ This is basically rot 13 encoded, which gives the flag.
 ### Flag
 `picoCTF{p33kab00_1_s33_u_deadbeef}`
 
+## Enhance!
+
+The given file from where we need to get the flag is a Scalable Vector Graphic. This type of image file can typically zoomed in more and more without affecting the quality of the image too much. However, we can only zoom in on the file a little bit.
+On opening the file using ghex, we see that it is a file of `xml`(Extensible Markup Language) type.
+![image](https://github.com/kua23/picoCTF/assets/61975172/f53afa5b-e091-45ea-bab0-9d88874bc379)
+
+Thus we can create a copy of the file and change the file formatting to `xml` to see if there are any other hidden details. Opening the file in any text editor like Visual Studio Code, we can see the contents of the xml file.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/72d649cc-b779-4ba6-9ca0-f544daba4320)
+
+Along with the circle, ellipse, there is a text layer in the xml file whose size is just 0.00352781 pixel. If we further scroll down, we can see the flag which is typed in different rows, On combining all of them, we get the flag. 
+![image](https://github.com/kua23/picoCTF/assets/61975172/9425f054-84f0-4e43-940d-3ea97f64de29)
+
+### Flag
+`picoCTF{3nh4nc3d_24374675}`
+
+
+
+
+
+
 
 
 
