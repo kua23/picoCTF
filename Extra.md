@@ -191,12 +191,19 @@ The title of the CTF itself gives the hint towards the flag. Metadata is basical
 
 In which the artist of the image is the flag.
 
-
-
 ### Flag
 picoCTF{s0_m3ta_eb36bf44}
 
-##
+## What Lies Within
+
+For this, we are given a `buildings.png` and we need to find out how to extract the flag from the given image file. We can use the `zsteg -a buildings.png` command in order to try and extract any information hiding in the image. However, it gives a very long line of text output which is difficult to search through. Instead we can use 
+![image](https://github.com/kua23/picoCTF/assets/61975172/8102c359-95b5-4db4-86be-19b0736721bb)
+the grep command to extract the flag
+
+### Flag
+`picoCTF{h1d1ng_1n_th3_b1t5}`
+
+## 
 
 
 
