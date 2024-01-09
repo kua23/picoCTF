@@ -163,6 +163,31 @@ If we go to the list of file signatures too, it shows the same thing that it is 
 ### Flag
 picoCTF{now_you_know_about_extensions}
 
+## Packet Primer
+
+Another simple challenge... In this, we are given a `pcap` file which can be opened in WireShark. It contains a list of 9 IP addresses, and if you just scroll through the hexdumps of the packets sent over the IP addresses, you get the flag in one of the addresses.
+![image](https://github.com/kua23/picoCTF/assets/61975172/1ab5c300-262e-4aac-8bd7-0610fc4de490)
+
+
+### Flag
+`picoCTF{p4ck37_5h4rk_01b0a0d6}`
+
+## Redaction gone wrong
+
+Here, certain parts of the pdf have been bloocked out, and it looks like one part of it contains the flag. Hence we can use the following command
+![image](https://github.com/kua23/picoCTF/assets/61975172/b8284b7c-169d-4339-96bf-51fc9977c33e) to convert the pdf document to a .txt document. 
+Then we can use the `grep` command
+![image](https://github.com/kua23/picoCTF/assets/61975172/c53df197-61d5-4bb9-b411-1b262d6ae19d) to get the flag.
+
+For an easier but cheesy way, we can just open it using the default pdf viewer of the system, and then select the text using the cursor which highlights the text.
+![image](https://github.com/kua23/picoCTF/assets/61975172/e5bfd53d-e9f1-4a87-a69b-461186c7fdb1)
+
+### Flag
+picoCTF{C4n_Y0u_S33_m3_fully}
+
+##
+
+
 
 
 
