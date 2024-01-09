@@ -95,7 +95,35 @@ Upon opening the picture and scrolling to the bottom, you do find a line saying 
 ### Flag
 picoCTF{more_than_m33ts_the_3y3eBdBd2cc}
 
+
 ## Wireshark doo dooo do doo...
+
+This is based on packet capture, which basically means capturing the traffic going across the network. As we transfer data, first a segment header(transport) is added to the data, then a packet header(network) followed by a frame header and a frame trailer(data link).
+
+Now, there are 937 packets to choose the flag from and we have no idea where to start. Thus we can start from going to the Statistics drop down and clicking on Conversations in order to determine the communication between the system sending the packets and the system receiving the packets. 
+![image](https://github.com/kua23/picoCTF/assets/61975172/a833c973-59d3-46eb-ac83-9b935fe1e609)
+This does provide some data, but not very important.
+
+In the same Statistics drop down, we can go to the Protocol Hierarchy menu to see the most used protocols in sending these packets.
+![image](https://github.com/kua23/picoCTF/assets/61975172/6b77aa67-f44c-4b36-ac20-55a4f49e4aed)
+
+We can see that most of the bytes are occurring in HTTP, which looks like an ideal place to start looking for the flag. 
+
+Thus, we can go back to the Conversations page and click on the IPv4 filter where we get a bunch of IP addresses. If we go to to any one of these addresses, right click and click 'Appy as filter to A <--> B. This is basically done to filter only those IP addresses from the given host to the destination.
+![image](https://github.com/kua23/picoCTF/assets/61975172/fba21481-39ff-4d45-b778-907cd6351d71)
+
+Once this is done, we can go back to the main panel, right click any IP address following the HTTP protocol and follow the HTTP stream.
+![image](https://github.com/kua23/picoCTF/assets/61975172/bce2e643-cb3e-4ec1-9424-1099f9dfd0c5)
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/e55e552f-c9fa-49f6-98e8-7f1b0c735b8d)
+We basically get the information corresponding to the data sent through the corresponding packet, and at the end it looks suspiciously like a flag. 
+
+This is basically rot 13 encoded, which gives the flag. 
+
+### Flag
+`picoCTF{p33kab00_1_s33_u_deadbeef}`
+
+
 
 
 
