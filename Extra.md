@@ -139,6 +139,33 @@ Along with the circle, ellipse, there is a text layer in the xml file whose size
 ### Flag
 `picoCTF{3nh4nc3d_24374675}`
 
+## Lookey here
+
+This is one of the easiest. It just is a text file containing a lot of text. Based on the hint given, if we just use the `grep` command we get the flag
+![image](https://github.com/kua23/picoCTF/assets/61975172/d842fdb9-e84b-4738-a49a-c499993ddb70)
+
+### Flag
+picoCTF{gr3p_15_@w3s0m3_2116b979}
+
+## Extensions
+
+Trying to open it with the default text editor, it shows that the user does not have permissions to do so. If we `cat` the file too, it shows a bunch of nonsensical characters. However, at the top of the file it says PNG which means that it may actually be a picture encoded as a text file. Opening the text file using GHex to get its hex dump, we can see the first few magic bytes to determine what type of file it actually is.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/d49d10f9-cb42-4554-add6-0fc593371189)
+
+If we use `file flag.txt` it shows that it is actually PNG.
+![image](https://github.com/kua23/picoCTF/assets/61975172/dd02a70d-4812-4db5-ba70-ec2cd6edc78a)
+
+If we go to the list of file signatures too, it shows the same thing that it is a .png. Now, if we change the extension to .png, we can view the flag.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/b49077e8-5167-4c52-a30e-3cdedc1157b9)
+
+### Flag
+picoCTF{now_you_know_about_extensions}
+
+
+
+
 
 
 
