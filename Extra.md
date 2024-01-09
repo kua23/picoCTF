@@ -1,4 +1,4 @@
-## information
+## 1. information
 
 It's a cute cat picture, AWWWWWW... but what's hidden sneakily in this picture? My first intuition is to use the `exiftool` command which returns the generic file properties of the picture. Upon using `exiftool cat.jpg`, we get all the details of the picture. 
 ```
@@ -39,7 +39,7 @@ The only thing that catches my eye is the license which looks like it has been e
 picoCTF{the_m3tadata_1s_modified}
 
 
-## Matryoshka doll
+## 2. Matryoshka doll
 By definition, a matryoshka doll is a Russian doll which contains smaller dolls inside it, which in turn contain smaller dolls. The title itself sounds like a hint to the ctf, trying to imply that there maybe hidden files inside the base `dolls.jpg`. Upon using `binwalk -e dolls.jpg `, the code returned is
 ```
                                  
@@ -86,7 +86,7 @@ picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}
 ### Flag
 picoCTF{4cf7ac000c3fb0fa96fb92722ffb2a32}   
 
-## Glory of the Garden
+## 3. Glory of the Garden
 ![image](https://github.com/kua23/picoCTF/assets/61975172/e505a2fd-0839-41b0-919b-b5cca0ab4c15)
 
 The hint given for this ctf is what iss a hexeditor, which seems pretty obvious that we need to open the pictures using (a hexeditor)[https://hexed.it/]
@@ -96,7 +96,7 @@ Upon opening the picture and scrolling to the bottom, you do find a line saying 
 picoCTF{more_than_m33ts_the_3y3eBdBd2cc}
 
 
-## Wireshark doo dooo do doo...
+## 4. Wireshark doo dooo do doo...
 
 This is based on packet capture, which basically means capturing the traffic going across the network. As we transfer data, first a segment header(transport) is added to the data, then a packet header(network) followed by a frame header and a frame trailer(data link).
 
@@ -123,7 +123,7 @@ This is basically rot 13 encoded, which gives the flag.
 ### Flag
 `picoCTF{p33kab00_1_s33_u_deadbeef}`
 
-## Enhance!
+## 5. Enhance!
 
 The given file from where we need to get the flag is a Scalable Vector Graphic. This type of image file can typically zoomed in more and more without affecting the quality of the image too much. However, we can only zoom in on the file a little bit.
 On opening the file using ghex, we see that it is a file of `xml`(Extensible Markup Language) type.
@@ -139,7 +139,7 @@ Along with the circle, ellipse, there is a text layer in the xml file whose size
 ### Flag
 `picoCTF{3nh4nc3d_24374675}`
 
-## Lookey here
+## 6. Lookey here
 
 This is one of the easiest. It just is a text file containing a lot of text. Based on the hint given, if we just use the `grep` command we get the flag
 ![image](https://github.com/kua23/picoCTF/assets/61975172/d842fdb9-e84b-4738-a49a-c499993ddb70)
@@ -147,7 +147,7 @@ This is one of the easiest. It just is a text file containing a lot of text. Bas
 ### Flag
 picoCTF{gr3p_15_@w3s0m3_2116b979}
 
-## Extensions
+## 7. Extensions
 
 Trying to open it with the default text editor, it shows that the user does not have permissions to do so. If we `cat` the file too, it shows a bunch of nonsensical characters. However, at the top of the file it says PNG which means that it may actually be a picture encoded as a text file. Opening the text file using GHex to get its hex dump, we can see the first few magic bytes to determine what type of file it actually is.
 
@@ -163,7 +163,7 @@ If we go to the list of file signatures too, it shows the same thing that it is 
 ### Flag
 picoCTF{now_you_know_about_extensions}
 
-## Packet Primer
+##8.  Packet Primer
 
 Another simple challenge... In this, we are given a `pcap` file which can be opened in WireShark. It contains a list of 9 IP addresses, and if you just scroll through the hexdumps of the packets sent over the IP addresses, you get the flag in one of the addresses.
 ![image](https://github.com/kua23/picoCTF/assets/61975172/1ab5c300-262e-4aac-8bd7-0610fc4de490)
@@ -172,7 +172,7 @@ Another simple challenge... In this, we are given a `pcap` file which can be ope
 ### Flag
 `picoCTF{p4ck37_5h4rk_01b0a0d6}`
 
-## Redaction gone wrong
+## 9. Redaction gone wrong
 
 Here, certain parts of the pdf have been bloocked out, and it looks like one part of it contains the flag. Hence we can use the following command
 ![image](https://github.com/kua23/picoCTF/assets/61975172/b8284b7c-169d-4339-96bf-51fc9977c33e) to convert the pdf document to a .txt document. 
@@ -185,7 +185,7 @@ For an easier but cheesy way, we can just open it using the default pdf viewer o
 ### Flag
 picoCTF{C4n_Y0u_S33_m3_fully}
 
-## So Meta
+## 10. So Meta
 The title of the CTF itself gives the hint towards the flag. Metadata is basically the information about the data we want. Thus, in order to find the data about the image given in the CTF, we can use 
 ![image](https://github.com/kua23/picoCTF/assets/61975172/b5b611ff-917d-49aa-9841-65832c358a82)
 
@@ -194,7 +194,7 @@ In which the artist of the image is the flag.
 ### Flag
 picoCTF{s0_m3ta_eb36bf44}
 
-## What Lies Within
+## 11. What Lies Within
 
 For this, we are given a `buildings.png` and we need to find out how to extract the flag from the given image file. We can use the `zsteg -a buildings.png` command in order to try and extract any information hiding in the image. However, it gives a very long line of text output which is difficult to search through. Instead we can use 
 ![image](https://github.com/kua23/picoCTF/assets/61975172/8102c359-95b5-4db4-86be-19b0736721bb)
@@ -203,7 +203,28 @@ the grep command to extract the flag
 ### Flag
 `picoCTF{h1d1ng_1n_th3_b1t5}`
 
-## 
+## 12. Sleuthkit Intro
+
+In this we are given a file of the .gz file and are asked to find out the sectors that it occupies in a new disk partition. First, in order to check the amount of space it takes up we have to unzip the file as it is compressed. This can be done using
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/22e68eca-18ef-4243-8266-0964c977899d)
+
+Then, upon using the `mmls` command we can figure out the length of the sector.
+![image](https://github.com/kua23/picoCTF/assets/61975172/36fb4962-df94-44c9-b1b2-7030e8164a80)
+
+In order to get the flag, we need to input this in the netcat link which the challenge has provided.
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/11e76441-c336-4ac4-b02d-30fc1b35f965)
+Thus, we get the flag.
+
+### Flag
+picoCTF{mm15_f7w!}
+
+
+
+
+
+
 
 
 
