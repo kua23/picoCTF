@@ -185,8 +185,18 @@ For an easier but cheesy way, we can just open it using the default pdf viewer o
 ### Flag
 picoCTF{C4n_Y0u_S33_m3_fully}
 
-##
+## So Meta
+The title of the CTF itself gives the hint towards the flag. Metadata is basically the information about the data we want. Thus, in order to find the data about the image given in the CTF, we can use 
+![image](https://github.com/kua23/picoCTF/assets/61975172/b5b611ff-917d-49aa-9841-65832c358a82)
 
+In which the artist of the image is the flag.
+
+
+
+### Flag
+picoCTF{s0_m3ta_eb36bf44}
+
+##
 
 
 
