@@ -70,10 +70,28 @@ Here, the cipher is given as `picoCTF{ynkooejcpdanqxeykjrbdofgkq}`, and as the c
 On manually listening to the audio, we can compute the dits(.) and the das(_) and the pauses(/). On listening to it completely, we get
 `.-- .... ....- --... / .... ....- --... .... / ----. ----- -.. / .-- ..--- ----- ..- ----. .... --...` which upon decoding using an online decoder like (this)[https://morsecode.world/international/translator.html].
 
-
-
 ### Flag
 `picoCTF{wh47_h47h_90d_w20u9h7}`
+
+## credstuff
+
+Okay, here we are given two files `usernames.txt` and `passwords.txt`. Both of these contain the username and passwords of users and each line of one corresponds to the same in the other. So, here we can figure out which line the username `cultiris` is in and find the same line in the `passwords.txt`. The only problem is that both of them contain a lot of lines. So instead we can use the following commands:
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/c56d1b26-15ff-4ba7-bf61-4de45fa6d28e)
+
+Here the -n is used to return the line of `cultiris`
+
+In order to get the same line from the passwords.txt, we can use:
+![image](https://github.com/kua23/picoCTF/assets/61975172/8a73a972-9b6e-4821-a529-fa3de6c9bc5a)
+where the sed command is used to return the 378th line from passwords.txt
+
+The returned password looks like it is in rot13 and hence can be decoded using the same Python program.
+
+### Flag
+`picoCTF{C7r1F_54V35_71M3}`
+
+
+
 
 
 
