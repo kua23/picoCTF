@@ -46,7 +46,18 @@ We will get the encryption if we check the column or row of S containing U corre
 ### Flag
 `picoCTF{CRYPTOISFUN}`
 
-## 
+## 13
+
+This is again based on rot13. If we use the same code as shown in the first program, we get the answer.
+![image](https://github.com/kua23/picoCTF/assets/61975172/656fdcc8-8105-4314-89d6-1b1f24fd61de)
+
+
+
+### Flag
+
+picoCTF{not_too_bad_of_a_problem}
+
+
 
 
 
