@@ -27,6 +27,11 @@ picoCTF{next_time_I'll_try_2_rounds_of_rot13_wqWOSBKW}
 Here, the image consists of a code of numbers and we need to dedcipher the flag from them. 
 ![image](https://github.com/kua23/picoCTF/assets/61975172/97b5986e-9c46-4346-ab07-d830cf5fb57a)
 Here, as the starting part of every flag starts with picoCTF{}, even this flag must start with it. Here, each numbers does look like it just corresponds to its own letter in the alphabet. It is basically a substitution cipher. Hence upon decoding it, we get the flag
+We can use this code to decode it,
+![image](https://github.com/kua23/picoCTF/assets/61975172/43c2a843-b701-4611-93b4-ff11f227f6f5)
+
+Here, every space counts as a separator, so each of the elements in the string `string` before each space is considered as one element and appended into the list `cipher`. The flag is initialized as an empty string. Now, iterating through the string, we first check if the element in the list is a number. If it is a number, it is converted into its corresponding letter based on the ASCII numbers. It is finally appended into the flag. If it is not a number it is directly appended into the flag as is the case with the `{}`
+
 
 ### Flag
 `picoCTF{thenumbersmason}`
