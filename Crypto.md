@@ -105,4 +105,18 @@ which is the flag. `WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_4A76B997`
 `picoCTF{WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_4A76B997}`
 
 
+## Vigenere
+It is a polyalphabetic cipher which means different alphabets in the encrypted message can correspond to the same letter in the decrypted message.  It is basically a Caesar cipher in two dimensions. 
+On using a decipher like the vigenere dcoder, we can get the flag using the given key
+
+
+
+![image](https://github.com/kua23/picoCTF/assets/61975172/82578a2a-626d-4541-a62f-c07cf475f692)
+
+### Flag
+`picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_2951a89h}
+`
+
+
+
 
