@@ -57,6 +57,15 @@ This is again based on rot13. If we use the same code as shown in the first prog
 
 picoCTF{not_too_bad_of_a_problem}
 
+## cipher
+
+Here, the cipher is given as `picoCTF{ynkooejcpdanqxeykjrbdofgkq}`, and as the challenge name suggests is a caesar cipher. However, as the cipher given already has the word picoCTF it is very time consuming to bruteforce through every rot, so instead we can use an online decoder like (this website)[https://www.dcode.fr/caesar-cipher] which gives us the flag. 
+![image](https://github.com/kua23/picoCTF/assets/61975172/9eebf85a-60ec-4606-a3a9-8e274bcf3f54)
+
+### Flag
+`picoCTF{crossingtherubiconvfhsjkou}`
+
+
 
 
 
