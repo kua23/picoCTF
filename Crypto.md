@@ -22,4 +22,14 @@ This is how rot13 works and this is how we get the flag.
 ### Flag
 picoCTF{next_time_I'll_try_2_rounds_of_rot13_wqWOSBKW}
 
-## 
+## The Numbers
+
+Here, the image consists of a code of numbers and we need to dedcipher the flag from them. 
+![image](https://github.com/kua23/picoCTF/assets/61975172/97b5986e-9c46-4346-ab07-d830cf5fb57a)
+Here, as the starting part of every flag starts with picoCTF{}, even this flag must start with it. Here, each numbers does look like it just corresponds to its own letter in the alphabet. It is basically a substitution cipher. Hence upon decoding it, we get the flag
+
+### Flag
+`picoCTF{thenumbersmason}`
+
+##
+
