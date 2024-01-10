@@ -90,11 +90,19 @@ The returned password looks like it is in rot13 and hence can be decoded using t
 ### Flag
 `picoCTF{C7r1F_54V35_71M3}`
 
+## RailFence
 
+This is a different type of cipher which depends on arranging the letters in the form of a zigzag or a railtrack. Here, they have given that it has to be arranged in the form of 4 rails. On checking the Wikipedia page, we get to know more about this cipher. The rails repeat with a period of 2(N-1), where N is the number of rails, which is 6 in this case. L is the length of the string to be decrypted which in this case is `Ta _7N6D49hlg:W3D_H3C31N__A97ef sHR053F38N43D7B i33___N6`
+is 56. K = L/(2N-1), which is almost 9 and that it how it has been split. 
+This gives us
+T    a           _     7     N     6     D     4     9 
+ h   l g   : W   3 D   _ H   3 C   3 1   N _   _ A   9 7
+  e f     s   H R   0 5   3 F   3 8   N 4   3 D   7 B   
+         i     3     3     _     _     _     N     6    
+which is the flag. `WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_4A76B997`
 
-
-
-
+### Flag
+`picoCTF{WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_4A76B997}`
 
 
 
