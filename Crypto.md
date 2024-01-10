@@ -116,7 +116,27 @@ On using a decipher like the vigenere dcoder, we can get the flag using the give
 ### Flag
 `picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_2951a89h}
 `
+### Flags
+
+We are given a series of flags, closely representing the flag name for the challenge. However, upon running metadata, extraction and steganography tools, no useful conclusion was obtained.
+![image](https://github.com/kua23/picoCTF/assets/61975172/b68859aa-a6b6-4e15-ad2d-366245d3f9da)
+
+Hence, a google image search of one of the flags proved to be successful. 
+It looks like each of the flag stands for a nautical flag, corresponding to a single letter of the alphabet.
+![image](https://github.com/kua23/picoCTF/assets/61975172/eb5eeb94-b5bc-468c-9d30-e2e12aea62c1)
+
+Thus, if we decode all the flags, we get the flag.
+![image](https://github.com/kua23/picoCTF/assets/61975172/dd7988d0-257c-4044-9565-b08e9f15cfdf)
 
 
+# Flag
+picoCTF{f1ag5and5tuff}
+
+## Tapping
+
+We are given a morse code, which can easily be decoded by an online morse decoder
+
+### Flag 
+`PICOCTF{M0RS3C0D31SFUN2683824610}`
 
 
