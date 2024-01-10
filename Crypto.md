@@ -36,5 +36,18 @@ Here, every space counts as a separator, so each of the elements in the string `
 ### Flag
 `picoCTF{thenumbersmason}`
 
-##
+## easy 1
+
+Here, they have given the decrypted flag(even though they've mentioned encrypted) and the key and have given a decryption table. This is first of all a classic example of Vigenere cipher. As the table is a decryption table, in order for it to work as a decription table, we need to use it in reverse. As the decrypted flag is `UFJKXQZQUNB ` and the key is `SOLVECRYPTO`. Thus in the given table,
+![image](https://github.com/kua23/picoCTF/assets/61975172/ff1278cf-0d4b-43ec-84d0-5c11d727c733)
+
+We will get the encryption if we check the column or row of S containing U corresponds to which row or column. Here this corresponds to C. Similarly, for another example, if we take the letter O in the column and move down the same column till we find F, the row corresponding to the letter F is R. And if we continue to solve it, we get the flag. 
+
+### Flag
+`picoCTF{CRYPTOISFUN}`
+
+## 
+
+
+
 
