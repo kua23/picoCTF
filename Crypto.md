@@ -65,6 +65,15 @@ Here, the cipher is given as `picoCTF{ynkooejcpdanqxeykjrbdofgkq}`, and as the c
 ### Flag
 `picoCTF{crossingtherubiconvfhsjkou}`
 
+## morse-code
+
+On manually listening to the audio, we can compute the dits(.) and the das(_) and the pauses(/). On listening to it completely, we get
+`.-- .... ....- --... / .... ....- --... .... / ----. ----- -.. / .-- ..--- ----- ..- ----. .... --...` which upon decoding using an online decoder like (this)[https://morsecode.world/international/translator.html].
+
+
+
+### Flag
+`picoCTF{wh47_h47h_90d_w20u9h7}`
 
 
 
