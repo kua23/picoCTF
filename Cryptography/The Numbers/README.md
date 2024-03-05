@@ -1,5 +1,7 @@
 # The numbers
 
+Points: 50
+
 ### Challenge
 
 The numbers... what do they mean?
