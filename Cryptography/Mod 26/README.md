@@ -1,5 +1,7 @@
 # Mod 26
 
+Points: 10
+
 ### Challenge
 
 Cryptography can be easy, do you know what ROT13 is?  
