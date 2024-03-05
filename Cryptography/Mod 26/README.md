@@ -9,7 +9,8 @@ Cryptography can be easy, do you know what ROT13 is?
 This can be solved online if you don't want to do it by hand!
 
 ## Solution
-It is basic ROT 13 for which I've written a code.  
+It is a basic ROT 13, a Caesar cypher, in which each letter is shifted by 13 letters.  
+I have written a code for this.
 Or else use [https://www.dcode.fr/rot-13-cipher]
 
 ### Flag
